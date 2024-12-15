@@ -36,11 +36,11 @@ export default function HomePage() {
           return (
             <div
               key={widget}
-              className="w-72 bg-white shadow-lg rounded-lg overflow-hidden"
+              className="w-72 h-80 bg-white shadow-lg rounded-lg overflow-hidden flex flex-col"
             >
-              <div className="p-6">
+              <div className="flex flex-col justify-between h-full p-6">
                 <h3 className="text-xl font-semibold text-gray-800">{formattedTitle}</h3>
-                <div className="mt-4">
+                <div className="mt-4 flex-grow overflow-auto">
                   <WidgetComponent /> {/* Render the widget directly */}
                 </div>
                 <Link
