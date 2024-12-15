@@ -41,7 +41,7 @@ export default function HomePage() {
               <div className="flex flex-col justify-between h-full p-6">
                 <h3 className="text-xl font-semibold text-gray-800">{formattedTitle}</h3>
                 <div className="mt-4 flex-grow overflow-auto">
-                  <WidgetComponent /> {/* Render the widget directly */}
+                  <WidgetComponent />
                 </div>
                 <Link
                   href={`/widgets/${widget}`}
