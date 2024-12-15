@@ -1,14 +1,20 @@
 import fs from "fs";
 import path from "path";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
-export default function HomePage() {
+// Function to scan widgets directory
+const getWidgets = () => {
   const widgetsDir = path.join(process.cwd(), "src/app/widgets");
-  const widgets = fs
+  const widgetFolders = fs
     .readdirSync(widgetsDir, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
+    .filter((entry) => entry.isDirectory()) // Ensure we're only getting directories
+    .map((entry) => entry.name); // Get the directory names (widget names)
+  return widgetFolders;
+};
 
+export default function HomePage() {
+  const widgets = getWidgets(); // Get the list of widgets
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
       <header className="bg-gray-800 text-white py-12 text-center">
@@ -22,6 +28,11 @@ export default function HomePage() {
             .replace(/-/g, " ")
             .replace(/\b\w/g, (char) => char.toUpperCase());
 
+          // Dynamically import the widget component at build time
+          const WidgetComponent = dynamic(() =>
+            import(`./widgets/${widget}/page`).then((mod) => mod.default)
+          );
+
           return (
             <div
               key={widget}
@@ -29,6 +40,9 @@ export default function HomePage() {
             >
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800">{formattedTitle}</h3>
+                <div className="mt-4">
+                  <WidgetComponent /> {/* Render the widget directly */}
+                </div>
                 <Link
                   href={`/widgets/${widget}`}
                   className="mt-4 text-blue-600 hover:text-blue-800 underline"
