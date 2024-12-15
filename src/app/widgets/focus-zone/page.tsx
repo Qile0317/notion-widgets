@@ -7,18 +7,10 @@ export default function EphemeralNotesPage() {
   const [title, setTitle] = useState("Untitled Notes");
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-12 px-6">
       {/* Page Title */}
       <input
-        style={{
-          width: "100%",
-          fontSize: "24px",
-          fontWeight: "bold",
-          marginBottom: "10px",
-          padding: "10px",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-        }}
+        className="w-full max-w-2xl text-2xl font-bold mb-4 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Title your notes..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -26,32 +18,16 @@ export default function EphemeralNotesPage() {
 
       {/* Notes Area */}
       <textarea
-        style={{
-          width: "100%",
-          height: "70vh",
-          padding: "10px",
-          fontSize: "16px",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-        }}
+        className="w-full max-w-2xl h-[70vh] p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Write your ephemeral notes here. They'll disappear after this session."
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       />
 
       {/* Temporary Actions */}
-      <div style={{ marginTop: "10px", textAlign: "center" }}>
+      <div className="mt-6 flex space-x-4">
         <button
-          style={{
-            margin: "0 10px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "#f44336",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+          className="px-6 py-3 text-lg font-medium bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
           onClick={() => {
             setNotes("");
             setTitle("Untitled Notes");
@@ -60,16 +36,7 @@ export default function EphemeralNotesPage() {
           Clear Notes
         </button>
         <button
-          style={{
-            margin: "0 10px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "#2196f3",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+          className="px-6 py-3 text-lg font-medium bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
           onClick={() => navigator.clipboard.writeText(`Title: ${title}\n\n${notes}`)}
         >
           Copy Notes to Clipboard
