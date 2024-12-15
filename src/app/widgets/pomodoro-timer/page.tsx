@@ -18,17 +18,17 @@ export default function PomodoroTimerPage() {
 
   return (
     <div className="h-full flex flex-col items-center justify-center">
-      <h2 className="text-4xl font-mono mb-4">
+      <h2 className="text-4xl font-mono mb-4 text-gray-900">
         {minutes}:{seconds.toString().padStart(2, "0")}
       </h2>
       <div className="flex space-x-2">
         <button
           onClick={() => setIsRunning(!isRunning)}
-          className={`px-4 py-2 text-sm font-medium rounded-lg shadow-md transition 
+          className={`px-4 py-2 text-sm font-medium rounded-lg shadow-md transition text-white 
           ${
             isRunning
-              ? "bg-red-500 text-white hover:bg-red-600"
-              : "bg-green-500 text-white hover:bg-green-600"
+              ? "bg-red-500 hover:bg-red-600"
+              : "bg-green-500 hover:bg-green-600"
           }`}
         >
           {isRunning ? "Pause" : "Start"}

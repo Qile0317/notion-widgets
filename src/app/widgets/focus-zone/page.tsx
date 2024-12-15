@@ -3,19 +3,19 @@ import React, { useState } from "react";
 
 export default function EphemeralNotesPage() {
   const [notes, setNotes] = useState("");
-  const [title, setTitle] = useState("Untitled Notes");
+  const [title, setTitle] = useState("");
 
   return (
     <div className="h-full flex flex-col items-center justify-center p-4">
       <input
-        className="w-full max-w-2xl text-sm font-bold mb-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full max-w-2xl text-sm font-bold mb-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" // Added text-gray-900
         placeholder="Title your notes..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
 
       <textarea
-        className="w-full max-w-2xl h-40 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full max-w-2xl h-40 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" // Added text-gray-900
         placeholder="Write your ephemeral notes here."
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
