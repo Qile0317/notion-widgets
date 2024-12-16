@@ -20,6 +20,9 @@ export default function HomePage() {
       <header className="bg-gray-800 text-white py-12 text-center">
         <h1 className="text-4xl font-semibold">Notion Widget Gallery</h1>
         <p className="mt-2 text-lg">A collection of functional and customizable widgets.</p>
+        <p className="mt-4 text-sm text-gray-400">
+          You can change the theme using the URL parameter: <code>?theme=light</code> or <code>?theme=dark</code>.
+        </p>
       </header>
 
       <div className="flex flex-wrap justify-center gap-8 p-8">
