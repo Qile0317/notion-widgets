@@ -58,6 +58,7 @@ export default function PomodoroTimer() {
             style={{
               backgroundColor: "var(--color-button)",
               color: "var(--color-text-dark)",
+              border: `1px solid var(--color-accent)`,
             }}
           >
             Reset

@@ -8,6 +8,7 @@ export const THEMES: Record<ThemeName, { name: string; colors: Record<string, st
       "--color-text": "#37352f",
       "--color-button": "#e0e0e0",
       "--color-button-pressed": "#c0c0c0",
+      "--color-accent": "#f0f0f0",
     },
   },
   dark: {
@@ -17,6 +18,7 @@ export const THEMES: Record<ThemeName, { name: string; colors: Record<string, st
       "--color-text": "#ffffff",
       "--color-button": "#4f5b66",
       "--color-button-pressed": "#3b4a54",
+      "--color-accent": "#f0f0f0",
     },
   },
 };
