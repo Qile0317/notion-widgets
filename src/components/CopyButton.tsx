@@ -7,14 +7,19 @@ interface CopyButtonProps {
   disappearDuration?: number;
   small?: boolean;
   bgColor?: string;
+  hoverColor?: string;
+  textColor?: string;
 }
 
-const CopyButton: React.FC<CopyButtonProps> = ({ href, disappearDuration = 2000, small = true, bgColor = "bg-blue-500" }) => {
+const CopyButton: React.FC<CopyButtonProps> = ({
+  href, disappearDuration = 2000, small = true,
+  bgColor = "#FFFFFF", hoverColor = "#e0e0e0", textColor = "#FFFFFF90"
+}) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
     const url = new URL(href, window.location.origin);
-    url.search = window.location.search; // Preserve URL parameters
+    url.search = window.location.search;
     navigator.clipboard.writeText(url.href).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), disappearDuration);
@@ -24,7 +29,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ href, disappearDuration = 2000,
   return (
     <button
       onClick={handleCopy}
-      className={`flex items-center ${small ? "p-1 w-8 h-8 justify-center" : "p-2"} ${bgColor} text-white rounded hover:bg-blue-600`}
+      className={`flex items-center ${small ? "p-1 w-8 h-8 justify-center" : "p-2"} ${bgColor} text-${textColor} rounded hover:${hoverColor}`}
     >
       {copied ? (
         <CheckIcon className="h-5 w-5" />
