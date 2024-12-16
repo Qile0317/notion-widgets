@@ -3,19 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Dynamic defaults */
+  --color-bg: #ffffff;
+  --color-text: #37352f;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-text);
+  background: var(--color-bg);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode preference (fallback if theme query param isn't set) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #2f3437;
+    --color-text: #ffffff;
+  }
 }
