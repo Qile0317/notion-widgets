@@ -3,20 +3,9 @@
 @tailwind utilities;
 
 :root {
-  /* Theme-specific variables */
-  --color-bg-light: #ffffff;
-  --color-bg-dark: #2f3437;
-  --color-text-light: #37352f;
-  --color-text-dark: #ffffff;
-  --color-accent: #458588;
-  --color-button-light: #e0e0e0;
-  --color-button-dark: #4f5b66;
-  --color-button-pressed-light: #c0c0c0;
-  --color-button-pressed-dark: #3b4a54;
-
   /* Dynamic defaults */
-  --color-bg: var(--color-bg-light);
-  --color-text: var(--color-text-light);
+  --color-bg: #ffffff;
+  --color-text: #37352f;
 }
 
 body {
@@ -29,7 +18,7 @@ body {
 /* Dark mode preference (fallback if theme query param isn't set) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: var(--color-bg-dark);
-    --color-text: var(--color-text-dark);
+    --color-bg: #2f3437;
+    --color-text: #ffffff;
   }
 }

@@ -4,19 +4,19 @@ export const THEMES: Record<ThemeName, { name: string; colors: Record<string, st
   light: {
     name: "light",
     colors: {
-      "--color-bg": "--color-bg-light",
-      "--color-text": "--color-text-light",
-      "--color-button": "--color-button-light",
-      "--color-button-pressed": "--color-button-pressed-light",
+      "--color-bg": "#ffffff",
+      "--color-text": "#37352f",
+      "--color-button": "#e0e0e0",
+      "--color-button-pressed": "#c0c0c0",
     },
   },
   dark: {
     name: "dark",
     colors: {
-      "--color-bg": "--color-bg-dark",
-      "--color-text": "--color-text-dark",
-      "--color-button": "--color-button-dark",
-      "--color-button-pressed": "--color-button-pressed-dark",
+      "--color-bg": "#2f3437",
+      "--color-text": "#ffffff",
+      "--color-button": "#4f5b66",
+      "--color-button-pressed": "#3b4a54",
     },
   },
 };
@@ -26,7 +26,7 @@ export function applyTheme(themeName: string) {
 
   // Apply theme colors to CSS variables dynamically
   Object.entries(theme.colors).forEach(([key, value]) => {
-    document.documentElement.style.setProperty(key, `var(${value})`);
+    document.documentElement.style.setProperty(key, value);
   });
 
   // Set the theme attribute for tailwind utilities
