@@ -23,7 +23,13 @@ export const THEMES: Record<ThemeName, { name: string; colors: Record<string, st
   },
 };
 
-export function applyTheme(themeName: string) {
+export function applyThemeFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const theme = urlParams.get("theme") || "light"; // Default to light theme
+  applyTheme(theme);
+}
+
+function applyTheme(themeName: string) {
   const theme = THEMES[themeName as ThemeName] || THEMES.light;
 
   // Apply theme colors to CSS variables dynamically
@@ -34,20 +40,3 @@ export function applyTheme(themeName: string) {
   // Set the theme attribute for tailwind utilities
   document.documentElement.setAttribute("data-theme", theme.name);
 }
-
-export function applyThemeFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const theme = urlParams.get("theme") || "light"; // Default to light theme
-  applyTheme(theme);
-}
-
-export const getCurrentTheme = () => {
-    const theme = localStorage.getItem("theme");
-    return theme ? theme : 'light'; // Default to light theme if not set
-};
-  
-export const setTheme = (themeName: string) => {
-    const theme = THEMES[themeName as ThemeName] || THEMES.light;
-    localStorage.setItem("theme", theme.name);
-    applyTheme(theme.name); // Apply the theme when set
-};

@@ -2,8 +2,7 @@
 // import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { useEffect } from "react";
-import { applyTheme } from "@/lib/theme";
+import { useApplyTheme } from "@/lib/hooks/useApplyTheme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const theme = urlParams.get("theme") || "light"; // Default to light theme
-    applyTheme(theme); // Dynamically apply the theme using the utility
-  }, []);
+  useApplyTheme();
 
   return (
     <html lang="en">

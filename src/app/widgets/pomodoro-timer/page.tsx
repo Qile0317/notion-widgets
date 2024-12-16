@@ -23,7 +23,7 @@ export default function PomodoroTimer() {
 
   const handleReset = () => {
     setTimeLeft(25 * 60);
-    setIsRunning(false); // Ensure the timer does not start on reset
+    setIsRunning(false);
   };
 
   return (
