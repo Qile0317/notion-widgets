@@ -44,25 +44,29 @@ export default function FocusZone() {
         <button
           className="px-3 py-1 text-sm font-medium rounded-lg shadow-md focus:outline-none focus:ring-2"
           style={{
-            backgroundColor: "var(--color-accent)",
-            color: "var(--color-text-dark)",
+            backgroundColor: "var(--color-button)",
+            color: "var(--color-text)",
           }}
           onClick={() => {
             setNotes("");
             setTitle("");
           }}
+          onMouseDown={(e) => e.currentTarget.style.backgroundColor = "var(--color-button-pressed)"}
+          onMouseUp={(e) => e.currentTarget.style.backgroundColor = "var(--color-button)"}
         >
           Clear
         </button>
         <button
           className="px-3 py-1 text-sm font-medium rounded-lg shadow-md focus:outline-none focus:ring-2"
           style={{
-            backgroundColor: "var(--color-accent)",
-            color: "var(--color-text-dark)",
+            backgroundColor: "var(--color-button)",
+            color: "var(--color-text)",
           }}
           onClick={() =>
             navigator.clipboard.writeText(`Title: ${title}\n\n${notes}`)
           }
+          onMouseDown={(e) => e.currentTarget.style.backgroundColor = "var(--color-button-pressed)"}
+          onMouseUp={(e) => e.currentTarget.style.backgroundColor = "var(--color-button)"}
         >
           Copy
         </button>

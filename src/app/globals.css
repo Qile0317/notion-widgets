@@ -9,6 +9,10 @@
   --color-text-light: #37352f;
   --color-text-dark: #ffffff;
   --color-accent: #458588;
+  --color-button-light: #e0e0e0;
+  --color-button-dark: #4f5b66;
+  --color-button-pressed-light: #c0c0c0;
+  --color-button-pressed-dark: #3b4a54;
 
   /* Dynamic defaults */
   --color-bg: var(--color-bg-light);

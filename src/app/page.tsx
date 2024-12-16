@@ -1,20 +1,20 @@
 import fs from "fs";
 import path from "path";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import CopyButton from "../components/CopyButton";
 
 // Function to scan widgets directory
 const getWidgets = () => {
   const widgetsDir = path.join(process.cwd(), "src/app/widgets");
   const widgetFolders = fs
     .readdirSync(widgetsDir, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory()) // Ensure we're only getting directories
-    .map((entry) => entry.name); // Get the directory names (widget names)
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
   return widgetFolders;
 };
 
 export default function HomePage() {
-  const widgets = getWidgets(); // Get the list of widgets
+  const widgets = getWidgets();
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
       <header className="bg-gray-800 text-white py-12 text-center">
@@ -31,7 +31,6 @@ export default function HomePage() {
             .replace(/-/g, " ")
             .replace(/\b\w/g, (char) => char.toUpperCase());
 
-          // Dynamically import the widget component at build time
           const WidgetComponent = dynamic(() =>
             import(`./widgets/${widget}/page`).then((mod) => mod.default)
           );
@@ -41,17 +40,14 @@ export default function HomePage() {
               key={widget}
               className="w-72 h-80 bg-white shadow-lg rounded-lg overflow-hidden flex flex-col"
             >
-              <div className="flex flex-col justify-between h-full p-6">
-                <h3 className="text-xl font-semibold text-gray-800">{formattedTitle}</h3>
-                <div className="mt-4 flex-grow overflow-auto">
+              <div className="flex flex-col h-full p-6">
+                <h3 className="text-xl font-semibold text-gray-800 text-center">{formattedTitle}</h3>
+                <div className="mt-4 flex-grow overflow-auto border border-gray-300 rounded-lg shadow-sm p-4">
                   <WidgetComponent />
                 </div>
-                <Link
-                  href={`/widgets/${widget}`}
-                  className="mt-4 text-blue-600 hover:text-blue-800 underline"
-                >
-                  View Widget
-                </Link>
+                <div className="flex justify-center mt-auto">
+                  <CopyButton href={`/widgets/${widget}`} />
+                </div>
               </div>
             </div>
           );
