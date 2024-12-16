@@ -1,18 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { applyTheme } from "@/lib/theme";
+import React, { useState } from "react";
+import { useApplyTheme } from "@/lib/hooks/useApplyTheme";
 
 export default function FocusZone() {
+  useApplyTheme();
+
   const [notes, setNotes] = useState("");
   const [title, setTitle] = useState("");
-
-  // Optionally apply theme based on query parameters
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const theme = urlParams.get("theme") || "light"; // Default to light theme
-    applyTheme(theme);
-  }, []);
 
   return (
     <div className="h-full flex flex-col items-center justify-center p-4">

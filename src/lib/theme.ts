@@ -35,6 +35,12 @@ export function applyTheme(themeName: string) {
   document.documentElement.setAttribute("data-theme", theme.name);
 }
 
+export function applyThemeFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const theme = urlParams.get("theme") || "light"; // Default to light theme
+  applyTheme(theme);
+}
+
 export const getCurrentTheme = () => {
     const theme = localStorage.getItem("theme");
     return theme ? theme : 'light'; // Default to light theme if not set

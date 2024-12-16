@@ -1,18 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { applyTheme } from "@/lib/theme";
+import { useApplyTheme } from "@/lib/hooks/useApplyTheme";
 
 export default function PomodoroTimer() {
+  useApplyTheme();
+
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
-
-  // Apply theme dynamically based on query parameter
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const theme = urlParams.get("theme") || "light"; // Default to light theme
-    applyTheme(theme);
-  }, []);
 
   // Timer logic
   useEffect(() => {
